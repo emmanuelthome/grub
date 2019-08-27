@@ -314,6 +314,11 @@
     { 0x9a, 0x16, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d } \
   }
 
+#define GRUB_EFI_SMBIOS3_TABLE_GUID	\
+  { 0xf2fd1544, 0x9794, 0x4a2c, \
+    { 0x99, 0x2e, 0xe5, 0xbb, 0xcf, 0x20, 0xe3, 0x94 } \
+  }
+
 #define GRUB_EFI_SAL_TABLE_GUID \
   { 0xeb9d2d32, 0x2d88, 0x11d3, \
       { 0x9a, 0x16, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d } \
@@ -1686,7 +1691,8 @@ struct grub_efi_block_io
 typedef struct grub_efi_block_io grub_efi_block_io_t;
 
 #if (GRUB_TARGET_SIZEOF_VOID_P == 4) || defined (__ia64__) \
-  || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__)
+  || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__) \
+  || defined(__riscv)
 
 #define efi_call_0(func)		func()
 #define efi_call_1(func, a)		func(a)
